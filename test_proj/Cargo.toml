@@ -1,0 +1,8 @@
+[package]
+name = "test_proj"
+version = "0.1.0"
+authors = ["Kirill Mironov <arkrait04@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+NovelRusT = { path = "../lib/NovelRusT" }

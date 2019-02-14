@@ -5,7 +5,8 @@
 ### C++ ###
 # Prerequisites
 *.d
-
+NovelRT
+test_proj/target
 # Compiled Object files
 *.slo
 *.lo

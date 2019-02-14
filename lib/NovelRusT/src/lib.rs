@@ -1,19 +1,13 @@
 extern crate libc;
-use libc::c_float;
+use libc::c_int;
 
 #[link(name = "libnovelrt")]
 extern {
-    fn lib_novel_rt_run_on_update(subscriber: fn(c_float) -> ());
+    fn runNovel(display_number: c_int);
 }
 
-pub fn run_on_update(subscriber: fn(c_float) -> ()) {
+pub fn run_novel(display_number: i32) {
     unsafe {
-        lib_novel_rt_run_on_update(subscriber);
+        runNovel(display_number);
     };
-}
-
-pub fn test_call() {
-    run_on_update(|deltaTime| {
-        println!("deltaTime is {}", deltaTime);
-    });
 }
