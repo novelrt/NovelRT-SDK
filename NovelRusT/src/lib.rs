@@ -1,7 +1,9 @@
 extern crate NovelRT_sys;
-use NovelRT_sys::runNovel;
-pub fn run_novel(display_number: i32) {
+use NovelRT_sys::createRunner;
+pub use NovelRT_sys::NovelRunner_t;
+#[link(name = "NovelRTLib")]
+pub fn create_runner(display_number: i32) -> *mut NovelRunner_t {
     unsafe {
-        runNovel(display_number);
+        return createRunner(display_number);
     };
 }

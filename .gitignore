@@ -18,7 +18,6 @@ test_proj/target
 *.pch
 
 # Compiled Dynamic libraries
-*.so
 *.dylib
 *.dll
 
