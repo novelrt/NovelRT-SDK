@@ -3,10 +3,10 @@ use libc::{c_int, c_float};
 use std::os::raw::c_void;
 
 extern "C" {
-    pub fn createRunner(display_number: c_int) -> *mut NovelRunner;
-    fn destroyRunner(runner: *mut NovelRunner);
-    pub fn runOnUpdate(runner: *mut NovelRunner, subscriber: extern "C" fn (c_float) -> ());
-    pub fn runNovel(runner: *mut NovelRunner);
+    pub fn createRunner(display_number: c_int) -> *mut NovelRunnerWrapper;
+    fn destroyRunner(runner: *mut NovelRunnerWrapper);
+    pub fn runOnUpdate(runner: *mut NovelRunnerWrapper, subscriber: extern "C" fn (c_float) -> ());
+    pub fn runNovel(runner: *mut NovelRunnerWrapper);
 
     pub fn createGeoVector(x: *mut c_void, y: *mut c_void) -> *mut GeoVectorWrapper;
     fn destroyGeoVector(geo_vector: *mut GeoVectorWrapper);
@@ -17,9 +17,9 @@ extern "C" {
 }
 
 #[repr(C)]
-pub struct NovelRunner;
+pub struct NovelRunnerWrapper;
 
-impl Drop for NovelRunner {
+impl Drop for NovelRunnerWrapper {
     fn drop(&mut self) {
         unsafe {
             destroyRunner(self)
